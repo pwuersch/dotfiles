@@ -1,0 +1,14 @@
+refresh_completions() {
+  DIR=$ZDOTDIR/zfuncs
+
+  # ggt
+  ggt completion zsh > $DIR/_ggt
+
+  # helm
+  helm completion zsh > $DIR/_helm
+
+  # kubectl
+  kubectl completion zsh > $DIR/_kubectl
+  cp $DIR/_kubectl $DIR/_k \
+    && sed -i 's/#compdef kubectl/#compdef k/' $DIR/_k
+}
