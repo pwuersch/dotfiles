@@ -21,7 +21,7 @@ export BROWSER="/usr/bin/firefox"
 export MOZ_ENABLE_WAYLAND=1
 export EDITOR=nvim
 
-export PATH="$PATH:$DENO_INSTALL/bin"
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.dotnet/tools"
 export PATH="$PATH:$HOME/.yarn/bin"
 export PATH="$PATH:$DENO_INSTALL/bin"

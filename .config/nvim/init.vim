@@ -24,6 +24,7 @@ set signcolumn=yes
 set cmdheight=2
 set updatetime=50
 set shortmess+=c
+set laststatus=3
 
 call plug#begin("~/.vim/plugged")
   " Theme
@@ -33,9 +34,14 @@ call plug#begin("~/.vim/plugged")
   " Language Client
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
-  " TypeScript Highlighting
+  " COC extensions
+  Plug 'yaegassy/coc-volar', {'do': 'yarn install --frozen-lockfile'}
+
+  " Language extensions
+  Plug 'ray-x/go.nvim'
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
+  Plug 'hashivim/vim-terraform'
 
   " File Explorer with Icons
   Plug 'scrooloose/nerdtree'
