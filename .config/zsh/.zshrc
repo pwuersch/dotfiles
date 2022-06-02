@@ -39,7 +39,7 @@
   source_if_found $HOME/.cargo/env
   source_if_found $XDG_CONFIG_HOME/nvm/nvm.sh
 
-  source $ZDOTDIR/local/*
+  source $ZDOTDIR/local/*(D)
 
   unset -f source_if_found
 

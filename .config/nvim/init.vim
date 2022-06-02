@@ -25,32 +25,9 @@ set cmdheight=2
 set updatetime=50
 set shortmess+=c
 set laststatus=3
+set mouse=a
 
-call plug#begin("~/.vim/plugged")
-  " Theme
-  Plug 'dracula/vim'
-  Plug 'joshdick/onedark.vim'
-
-  " Language Client
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
-  " COC extensions
-  Plug 'yaegassy/coc-volar', {'do': 'yarn install --frozen-lockfile'}
-
-  " Language extensions
-  Plug 'ray-x/go.nvim'
-  Plug 'leafgarland/typescript-vim'
-  Plug 'peitalin/vim-jsx-typescript'
-  Plug 'hashivim/vim-terraform'
-
-  " File Explorer with Icons
-  Plug 'scrooloose/nerdtree'
-  Plug 'ryanoasis/vim-devicons'
-
-  " File Search
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
-call plug#end()
+lua require('plugins')
 
 " Enable theming support
 if (has("termguicolors"))
@@ -82,7 +59,6 @@ let g:fzf_action = {
 " requires silversearcher-ag
 " used to ignore gitignore files
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-
 " open new split panes to right and below
 set splitright
 set splitbelow
@@ -146,3 +122,4 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
