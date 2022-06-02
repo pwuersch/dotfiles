@@ -1,14 +1,37 @@
+#!/usr/bin/env zsh
+
 refresh_completions() {
-  DIR=$ZDOTDIR/zfuncs
+  completion_dir=$ZDOTDIR/zfuncs
+
+  local refresh_if_available() {
+    command=$1
+
+    # Check if command is available
+    if [[ $(command -v $command) != "" ]]; then
+      dest=$completion_dir/_$command
+      echo "Adding $command"
+
+      $command completion zsh >$dest
+
+      # Check for additional aliases
+      for alias_name in $(alias | grep "=$command" | cut -d = -f 1); do
+        alias_dest=$completion_dir/_$alias_name
+        echo "Adding alias $alias_name for $command"
+
+        cp $dest $alias_dest
+        sed -i "s/#compdef $command/#compdef $alias_name/" $alias_dest
+      done
+    else
+      echo "WARNING: Not refreshing $1"
+    fi
+  }
 
   # ggt
-  ggt completion zsh > $DIR/_ggt
+  refresh_if_available ggt "completion zsh"
 
   # helm
-  helm completion zsh > $DIR/_helm
+  refresh_if_available helm "completion zsh"
 
   # kubectl
-  kubectl completion zsh > $DIR/_kubectl
-  cp $DIR/_kubectl $DIR/_k \
-    && sed -i 's/#compdef kubectl/#compdef k/' $DIR/_k
+  refresh_if_available kubectl "completion zsh"
 }
