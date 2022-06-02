@@ -28,6 +28,8 @@ set laststatus=3
 set mouse=a
 
 lua require('plugins')
+lua require('mappings')
+lua require('lsp')
 
 " Enable theming support
 if (has("termguicolors"))
@@ -49,19 +51,6 @@ let mapleader=" "
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Toggle
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
-
-nnoremap <C-p> :FZF<CR>
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit'
-  \}
-" requires silversearcher-ag
-" used to ignore gitignore files
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-" open new split panes to right and below
-set splitright
-set splitbelow
 
 " turn terminal to normal mode with escape
 tnoremap <Esc> <C-\><C-n>
@@ -93,10 +82,10 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 
-augroup PIPPO
-    autocmd!
-    autocmd BufWritePre * :call TrimWhitespace()
-augroup END
+"augroup PIPPO
+"    autocmd!
+"    autocmd BufWritePre * :call TrimWhitespace()
+"augroup END
 
 " COC Completions
 inoremap <silent><expr> <TAB>
