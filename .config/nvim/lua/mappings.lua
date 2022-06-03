@@ -1,28 +1,27 @@
-local wk = require 'which-key'
+local wk = require('which-key')
 vim.g.mapleader = ' '
-
 
 -- wk.register(mapping, opts)
 wk.register({
-  	f = {
-    	name = "Telescope", -- optional group name
-    	f = { "<cmd>Telescope find_files<cr>", "Find File" },
-    	g = { "<cmd>Telescope live_grep<cr>", "Search Text" },
+	f = {
+		name = "Telescope", -- optional group name
+		f = { "<cmd>Telescope find_files<cr>", "Find File" },
+		g = { "<cmd>Telescope live_grep<cr>", "Search Text" },
 		b = { "<cmd>Telescope buffers<Cr>", "Search Buffer" },
 		h = { "<cmd>Telescope help_tags<Cr>", "Search Help Tags" },
-  	},
-  	p = {
-	  	name = "Packer",
-	  	s = { "<cmd>PackerStatus<Cr>", "Packer Status" },
+	},
+	p = {
+		name = "Packer",
+		s = { "<cmd>PackerStatus<Cr>", "Packer Status" },
 		S = { "<cmd>PackerSync<Cr>", "Packer Sync" },
-  	},
-  	['<leader>'] = {
-	  	name = "Special Operations",
-	  	s = { "<cmd>so %<Cr>", "Source current File" },
+	},
+	['<leader>'] = {
+		name = "Special Operations",
+		s = { "<cmd>so %<Cr>", "Source current File" },
 		r = { "<cmd>call number_set#relative_numb()<Cr>", "Set Relativ Number" },
 		n = { "<cmd>call number_set#normal_numb()<Cr>", "Set Number" },
 		i = { "<cmd>IndentBlanklineToggle<Cr>", "Toggle Indent Line" },
-  	},
+	},
 	x = {
 		name = 'Trouble',
 		x = { '<cmd>TroubleToggle<Cr>', 'Toggle Trouble' },
@@ -39,10 +38,7 @@ wk.register({
 		q = { "<cmd>q<Cr>", "Quit" },
 		f = { "<cmd>q!<Cr>", "Unsaved Quit" },
 		w = { "<cmd>wq<Cr>", "Save Quit" },
-
 	}
-
-
 }, { mode = 'n', prefix = "<leader>" })
 
 wk.register({
