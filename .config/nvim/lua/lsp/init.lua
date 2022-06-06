@@ -36,6 +36,9 @@ end
 local lsp_servers = { 
   tsserver = {},
   rust_analyzer = {},
+  terraformls = {
+    flags = { debounce_text_changes = 150 }
+  },
   gopls = {
     cmd = { "gopls", "serve" },
     settings = {

@@ -49,6 +49,8 @@ return require('packer').startup({
     use { 'hrsh7th/cmp-path', event = { 'InsertEnter', 'CmdlineEnter' } }
     use { 'hrsh7th/cmp-buffer', event = { 'InsertEnter', 'CmdlineEnter' } }
 
+    use { 'hashivim/vim-terraform' }
+
     use { 'nvim-lua/popup.nvim' }
     use { 'nvim-lua/plenary.nvim', module = 'plenary' }
     use { 'nvim-telescope/telescope.nvim' }
