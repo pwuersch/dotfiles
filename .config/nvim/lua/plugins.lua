@@ -7,53 +7,85 @@ vim.cmd([[
   augroup end
 ]])
 
-local function use_config(name)
-  return function() 
-    require('config.' .. name)
-  end
-end
-
-local function defer_to_autocmd(event, loader)
-  return function()
-    vim.api.nvim_create_autocmd(event, {
-      callback = function()
-        vim.defer_fn(function()
-          vim.cmd(loader)
-        end, 100)
-      end
-    })
-  end
-end
-
 return require('packer').startup({
   function(use)
     use { 'wbthomason/packer.nvim' }
     use { 'lewis6991/impatient.nvim' }
 
-    use { 'dracula/vim' }
-    use { 'joshdick/onedark.vim' }
-    
-    -- use { 'ray-x/go.nvim' }
-    -- use { 'leafgarland/typescript-vim' }
-    -- use { 'peitalin/vim-jsx-typescript' }
+    -- Themes
+    use {
+      { 'joshdick/onedark.vim' },
+      { 'morhetz/gruvbox', cmd = 'colorscheme'},
+      { 'shaunsingh/nord.nvim', cmd = 'colorscheme' },
+      { 'NLKNguyen/papercolor-theme', cmd = 'colorscheme' },
+      { 'ghifarit53/tokyonight-vim', cmd = 'colorscheme' },
+      { 'sainnhe/everforest', cmd = 'colorscheme' },
+      { 'rmehri01/onenord.nvim', cmd = 'colorscheme' },
+      { 'dracula/vim', as = 'dracula' },
+      { 'catppuccin/nvim', as = 'catppuccin' },
+    }
 
-    use { 'ryanoasis/vim-devicons' }
+    -- which-key
     use {
       'folke/which-key.nvim',
       config = function() require('config.which-key') end,
     }
-    use { 'neovim/nvim-lspconfig' }
-    use { 'hrsh7th/cmp-nvim-lsp', module = 'cmp_nvim_lsp' }
-    use { 'hrsh7th/nvim-cmp' }
-    use { 'hrsh7th/cmp-vsnip', event = { 'InsertEnter', 'CmdlineEnter' } }
-    use { 'hrsh7th/cmp-path', event = { 'InsertEnter', 'CmdlineEnter' } }
-    use { 'hrsh7th/cmp-buffer', event = { 'InsertEnter', 'CmdlineEnter' } }
 
-    use { 'hashivim/vim-terraform' }
+    -- lsp
+    use {
+      'neovim/nvim-lspconfig',
+      config = function()
+        require('config.lsp')
+      end,
+      requires = {
+        'williamboman/nvim-lsp-installer'
+      }
+    }
 
-    use { 'nvim-lua/popup.nvim' }
-    use { 'nvim-lua/plenary.nvim', module = 'plenary' }
-    use { 'nvim-telescope/telescope.nvim' }
+    -- completion
+    use {
+      'hrsh7th/nvim-cmp',
+      config = function()
+        require('config.completion')
+      end,
+      requires = {
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-nvim-lua',
+        'hrsh7th/cmp-cmdline',
+        'hrsh7th/cmp-calc',
+        'hrsh7th/cmp-emoji',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-nvim-lsp-signature-help',
+        'saadparwaiz1/cmp_luasnip',
+        'f3fora/cmp-spell',
+        'petertriho/cmp-git',
+        'rafamadriz/friendly-snippets',
+        'L3MON4D3/LuaSnip',
+      }
+    }
+
+    -- completion kinds
+    use { 'onsails/lspkind.nvim' }
+
+
+    -- telescope popup
+    use {
+      'nvim-lua/popup.nvim',
+    }
+
+    -- telescope
+    use {
+      'nvim-telescope/telescope.nvim',
+      config = function()
+        require('config.telescope')
+      end,
+      requires = {
+        'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope-packer.nvim',
+        'nvim-telescope/telescope-file-browser.nvim',
+      }
+    }
 
     use {
       'nvim-treesitter/nvim-treesitter',
@@ -66,10 +98,30 @@ return require('packer').startup({
     }
 
     use {
+      'lewis6991/gitsigns.nvim',
+      config = function() require('config.gitsigns') end,
+    }
+
+    use {
       'windwp/nvim-autopairs',
       config = function() require('config.autopairs') end,
       event = { 'InsertEnter' },
       opt = true,
+    }
+
+    use {
+      'folke/trouble.nvim',
+      event = "BufReadPre",
+      requires = 'kyazdani42/nvim-web-devicons',
+      cmd = { 'TroubleToggle', 'Trouble' },
+      config = function() require('config.trouble') end,
+    }
+
+    use {
+      'tami5/lspsaga.nvim',
+      event = 'VimEnter',
+      cmd = { 'Lspsaga' },
+      config = function() require('config.lspsaga') end,
     }
   end,
 

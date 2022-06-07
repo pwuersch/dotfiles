@@ -10,7 +10,6 @@ vim.opt.hidden = true
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.undodir = '~/.vim/undodir'
 vim.opt.undofile = true
 vim.opt.incsearch = true
 vim.opt.scrolloff = 8
@@ -47,3 +46,5 @@ vim.cmd([[
   nnoremap <A-k> <C-w>k
   nnoremap <A-l> <C-w>l  
 ]])
+
+vim.cmd('colorscheme onedark')

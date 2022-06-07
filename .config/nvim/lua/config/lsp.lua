@@ -1,3 +1,10 @@
+local lsp_installer = require("nvim-lsp-installer")
+local lsp_config = require('lspconfig')
+
+lsp_installer.setup({
+  automatic_installation = true,
+})
+
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -33,26 +40,29 @@ local function config(_config)
 end
 
 
-local lsp_servers = { 
-  tsserver = {},
+local lsp_servers = {
+  ansiblels = {},
   rust_analyzer = {},
-  terraformls = {
-    flags = { debounce_text_changes = 150 }
-  },
-  gopls = {
-    cmd = { "gopls", "serve" },
-    settings = {
-      gopls = {
-        analyses = { unusedparams = true },
-        staticcheck = true,
-      }
-    }
-  },
+  terraformls = {},
+  tflint = {},
+  gopls = {},
+  angularls = {},
+  emmet_ls = {},
+  tsserver = {},
+  tailwindcss = {},
+  volar = {},
+  yamlls = {},
+  jsonls = {},
+  graphql = {},
+  html = {},
+  prismals = {},
+  pyright = {},
+  lemminx = {},
+  intelephense = {},
+  sumneko_lua = {},
+  prosemd_lsp = {},
 }
 
-local lsp_config = require('lspconfig')
 for lsp_server, lsp_server_config in pairs(lsp_servers) do
-  lsp_config[lsp_server].setup({
-    on_attach = on_attach,
-  })
+  lsp_config[lsp_server].setup(config(lsp_server_config))
 end

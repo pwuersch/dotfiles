@@ -38,13 +38,24 @@ wk.register({
 		q = { "<cmd>q<Cr>", "Quit" },
 		f = { "<cmd>q!<Cr>", "Unsaved Quit" },
 		w = { "<cmd>wq<Cr>", "Save Quit" },
-	}
+	},
+  l = {
+    name = "Code",
+    R = { "<cmd>Trouble lsp_references<cr>", "Trouble References" },
+    a = { "<cmd>Telescope lsp_code_actions<CR>", "Code Action" },
+    d = { "<cmd>Telescope diagnostics<CR>", "Diagnostics" },
+    f = { "<cmd>Lspsaga lsp_finder<CR>", "Finder" },
+    i = { "<cmd>LspInfo<CR>", "Lsp Info" },
+    n = { "<cmd>Lspsaga rename<CR>", "Rename" },
+    r = { "<cmd>Telescope lsp_references<CR>", "Diagnostics" },
+    t = { "<cmd>TroubleToggle<CR>", "Trouble" },
+  },
 }, { mode = 'n', prefix = "<leader>" })
 
 wk.register({
 	['<C-t>'] = { "<cmd>NvimTreeToggle<Cr>", "Toggle Nvim-Tree" },
 	['<C-a>'] = { "<cmd>call run_file#Run_File()<Cr>", "Run File" },
-	['<C-s>'] = { "<cmd>call save#w()<Cr>", "Save File" },
+	['<C-s>'] = { "<cmd>call write()<Cr>", "Save File" },
 	-- ['<C-r>'] = { "<cmd>call number_set#relative_numb()<Cr>", "Set Relativ Number" },
 	-- ['<C-e>'] = { "<cmd>call number_set#normal_numb()<Cr>", "Set Number" },
 	-- ['<C-i>'] = { "<cmd>IndentBlanklineToggle<Cr>", "Toggle Indent Line" },
