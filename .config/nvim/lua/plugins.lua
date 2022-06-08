@@ -84,6 +84,7 @@ return require('packer').startup({
         'nvim-lua/plenary.nvim',
         'nvim-telescope/telescope-packer.nvim',
         'nvim-telescope/telescope-file-browser.nvim',
+        'kdheepak/lazygit.nvim'
       }
     }
 
