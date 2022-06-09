@@ -12,6 +12,13 @@ return require('packer').startup({
     use { 'wbthomason/packer.nvim' }
     use { 'lewis6991/impatient.nvim' }
 
+    use {
+      'glepnir/dashboard-nvim',
+      config = function()
+      	require('config.dashboard')
+      end
+    }
+
     -- Themes
     use {
       { 'joshdick/onedark.vim' },

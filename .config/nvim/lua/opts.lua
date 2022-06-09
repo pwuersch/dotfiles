@@ -29,6 +29,8 @@ vim.opt.mouse = 'a'
 --vim.opt.nobackup = true
 --vim.opt.noshowmode = true
 
+--let g:dashboard_default_executive = 'telescope.nvim'
+--let g:mapleader = ' '
 
 --Enable theming support
 if vim.fn.has("termguicolors") == 1 then

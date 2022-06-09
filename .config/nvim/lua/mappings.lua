@@ -55,20 +55,12 @@ wk.register({
 wk.register({
 	['<C-t>'] = { "<cmd>NvimTreeToggle<Cr>", "Toggle Nvim-Tree" },
 	['<C-a>'] = { "<cmd>call run_file#Run_File()<Cr>", "Run File" },
-	['<C-s>'] = { "<cmd>call write()<Cr>", "Save File" },
+	['<C-s>'] = { "<cmd>:update<Cr>", "Save File" },
 	-- ['<C-r>'] = { "<cmd>call number_set#relative_numb()<Cr>", "Set Relativ Number" },
 	-- ['<C-e>'] = { "<cmd>call number_set#normal_numb()<Cr>", "Set Number" },
 	-- ['<C-i>'] = { "<cmd>IndentBlanklineToggle<Cr>", "Toggle Indent Line" },
 	['<C-h>'] = { "<cmd>WhichKey<Cr>", "Toggle WhichKey"},
 	['<ESC>'] = { "<cmd>nohl<Cr>", "Remove Search Highlights" },
-
-	-- Q = {
-	-- 	name = 'Quit',
-	-- 	q = { "<cmd>q<Cr>", "Quit" },
-	-- 	f = { "<cmd>q!<Cr>", "Unsaved Quit" },
-	-- 	s = { "<cmd>wq<Cr>", "Save Quit" },
-	-- },
-
 }, { mode = 'n' })
 
 wk.register({
