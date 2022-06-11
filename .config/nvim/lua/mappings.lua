@@ -5,7 +5,7 @@ vim.g.mapleader = ' '
 wk.register({
 	f = {
 		name = "Telescope",
-		f = { "<cmd>Telescope find_files<cr>", "Find Files (All)" },
+		f = { '<cmd>Telescope find_files find_command=rg,--hidden,--files<cr>', "Find Files (All)" },
     g = { "<cmd>Telescope git_files<cr>", "Find Files (Git)" },
 		t = { "<cmd>Telescope live_grep<cr>", "Search Text" },
 		b = { "<cmd>Telescope file_browser<cr>", "Browse Files" },
