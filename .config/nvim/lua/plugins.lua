@@ -126,6 +126,15 @@ return require('packer').startup({
     }
 
     use {
+      'akinsho/bufferline.nvim',
+      tag = 'v2.*',
+      requires = 'kyazdani42/nvim-web-devicons',
+      config = function()
+        require('config.bufferline')
+      end
+    }
+
+    use {
       'tami5/lspsaga.nvim',
       event = 'VimEnter',
       cmd = { 'Lspsaga' },

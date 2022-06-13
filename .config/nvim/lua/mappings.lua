@@ -67,6 +67,10 @@ wk.register({
 	['<C-s>'] = { "<cmd>:update<cr>", "Save File" },
 	['<C-h>'] = { "<cmd>WhichKey<cr>", "Toggle WhichKey"},
 	['<ESC>'] = { "<cmd>nohl<cr>", "Remove Search Highlights" },
+  ['<S-l>'] = { "<cmd>BufferLineCycleNext<cr>", "Next buffer tab" },
+  ['<S-h>'] = { "<cmd>BufferLineCyclePrev<cr>", "Previous buffer tab" },
+  ['>b'] = { "<cmd>BufferLineMoveNext<cr>", "Move buffer tab right" },
+  ['<b'] = { "<cmd>BufferLineMovePrev<cr>", "Move buffer tab left" },
 }, { mode = 'n' })
 
 wk.register({
