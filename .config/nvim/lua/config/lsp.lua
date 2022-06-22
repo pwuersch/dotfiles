@@ -61,6 +61,7 @@ local lsp_servers = {
   intelephense = {},
   sumneko_lua = {},
   prosemd_lsp = {},
+  bashls = {},
 }
 
 for lsp_server, lsp_server_config in pairs(lsp_servers) do
