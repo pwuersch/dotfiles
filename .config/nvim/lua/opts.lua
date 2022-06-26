@@ -15,7 +15,7 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 5
 vim.opt.completeopt = 'menuone,noinsert,noselect'
 vim.opt.signcolumn = 'yes'
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 vim.opt.updatetime = 50
 vim.opt.shortmess = vim.o.shortmess .. 'c'
 vim.opt.laststatus = 3
@@ -31,6 +31,8 @@ vim.opt.mouse = 'a'
 
 --let g:dashboard_default_executive = 'telescope.nvim'
 --let g:mapleader = ' '
+
+-- plugin globals
 
 --Enable theming support
 if vim.fn.has("termguicolors") == 1 then

@@ -144,6 +144,11 @@ return require('packer').startup({
     }
 
     use {
+      'APZelos/blamer.nvim',
+      event = 'BufEnter'
+    }
+
+    use {
       'tami5/lspsaga.nvim',
       event = 'VimEnter',
       cmd = { 'Lspsaga' },
