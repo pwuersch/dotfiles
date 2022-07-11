@@ -48,7 +48,7 @@ end
 cmp.setup({
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
   completion = {
@@ -113,7 +113,7 @@ cmp.setup({
     select = false,
   },
   experimental = {
-    ghost_text = false,
+    ghost_text = true,
     native_menu = false,
   },
 })

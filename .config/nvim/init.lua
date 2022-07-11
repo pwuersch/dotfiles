@@ -1,8 +1,11 @@
-require('impatient').enable_profile()
-
-require('opts')
+-- ignore errors on profile start
+pcall(function() 
+  require('impatient').enable_profile()
+end)
 
 require('plugins')
+
+require('opts')
 
 require('mappings')
 

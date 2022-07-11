@@ -1,9 +1,16 @@
+-- bootstrapping packer
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+end
+
 vim.cmd('packadd packer.nvim')
 
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile profile=false
   augroup end
 ]])
 
@@ -14,22 +21,20 @@ return require('packer').startup({
 
     use {
       'glepnir/dashboard-nvim',
-      config = function()
-      	require('config.dashboard')
-      end
+      config = function() require('config.dashboard') end
     }
 
     -- Themes
     use {
       { 'joshdick/onedark.vim' },
-      { 'morhetz/gruvbox', cmd = 'colorscheme'},
-      { 'shaunsingh/nord.nvim', cmd = 'colorscheme' },
-      { 'NLKNguyen/papercolor-theme', cmd = 'colorscheme' },
-      { 'ghifarit53/tokyonight-vim', cmd = 'colorscheme' },
-      { 'sainnhe/everforest', cmd = 'colorscheme' },
-      { 'rmehri01/onenord.nvim', cmd = 'colorscheme' },
-      { 'dracula/vim', as = 'dracula' },
-      { 'catppuccin/nvim', as = 'catppuccin' },
+      { 'morhetz/gruvbox', opt = true },
+      { 'shaunsingh/nord.nvim', opt = true },
+      { 'NLKNguyen/papercolor-theme', opt = true },
+      { 'ghifarit53/tokyonight-vim', opt = true },
+      { 'sainnhe/everforest', opt = true },
+      { 'rmehri01/onenord.nvim', opt = true },
+      { 'dracula/vim', as = 'dracula', opt = true },
+      { 'catppuccin/nvim', as = 'catppuccin', opt = true },
     }
 
     -- which-key
@@ -41,126 +46,135 @@ return require('packer').startup({
     -- lsp
     use {
       'neovim/nvim-lspconfig',
-      config = function()
-        require('config.lsp')
-      end,
+      event = 'BufEnter',
+      config = function() require('config.lsp') end,
       requires = {
-        'williamboman/nvim-lsp-installer'
+        'williamboman/nvim-lsp-installer',
+        'hrsh7th/cmp-nvim-lsp'
       }
     }
 
     -- completion
     use {
       'hrsh7th/nvim-cmp',
-      config = function()
-        require('config.completion')
-      end,
+      event = 'InsertEnter',
+      config = function() require('config.completion') end,
       requires = {
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-nvim-lua',
-        'hrsh7th/cmp-cmdline',
-        'hrsh7th/cmp-calc',
-        'hrsh7th/cmp-emoji',
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-nvim-lsp-signature-help',
-        'saadparwaiz1/cmp_luasnip',
-        'f3fora/cmp-spell',
-        'petertriho/cmp-git',
-        'rafamadriz/friendly-snippets',
-        'L3MON4D3/LuaSnip',
+        { 'hrsh7th/cmp-buffer' },
+        { 'hrsh7th/cmp-path' },
+        { 'hrsh7th/cmp-nvim-lua' },
+        { 'hrsh7th/cmp-cmdline' },
+        { 'hrsh7th/cmp-calc' },
+        { 'hrsh7th/cmp-emoji' },
+        { 'hrsh7th/cmp-nvim-lsp' },
+        { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+        { 'saadparwaiz1/cmp_luasnip' },
+        { 'f3fora/cmp-spell' },
+        { 'petertriho/cmp-git' },
+        { 'rafamadriz/friendly-snippets' },
+        { 'L3MON4D3/LuaSnip' },
+        { 'onsails/lspkind.nvim' },
       }
     }
 
-    -- completion kinds
-    use { 'onsails/lspkind.nvim' }
-
-
-    -- telescope popup
+    -- lazygit
     use {
-      'nvim-lua/popup.nvim',
+      'kdheepak/lazygit.nvim'
     }
+
 
     -- telescope
     use {
       'nvim-telescope/telescope.nvim',
-      config = function()
-        require('config.telescope')
-      end,
+      config = function() require('config.telescope') end,
       requires = {
         'nvim-lua/plenary.nvim',
-        'nvim-telescope/telescope-packer.nvim',
-        'nvim-telescope/telescope-file-browser.nvim',
-        'kdheepak/lazygit.nvim'
       }
     }
 
+    -- -- telescope extensions
+    -- use {
+    --   'nvim-telescope/telescope-packer.nvim',
+    --   cmd = 'Telescope',
+    --   config = function() require('config.telescope-packer') end,
+    -- }
+
+    -- use {
+    --   'nvim-telescope/telescope-file-browser.nvim',
+    --   cmd = 'Telescope',
+    --   config = function() require('config.telescope-file-browser') end
+    -- }
+
+    -- treesitter
     use {
       'nvim-treesitter/nvim-treesitter',
+      event = "BufEnter",
       config = function() require('config.treesitter') end,
       run = "TSUpdate",
     }
+
+    -- statusline
     use {
       'nvim-lualine/lualine.nvim',
       config = function() require('config.lualine') end,
     }
 
+    -- git status
     use {
       'lewis6991/gitsigns.nvim',
+      event = 'BufEnter',
       config = function() require('config.gitsigns') end,
     }
 
+    -- autopairs
     use {
       'windwp/nvim-autopairs',
+      event = 'InsertEnter',
       config = function() require('config.autopairs') end,
-      event = { 'InsertEnter' },
-      opt = true,
     }
 
+    -- trouble lsp interface
     use {
       'folke/trouble.nvim',
-      event = "BufReadPre",
+      event = "BufEnter",
       requires = 'kyazdani42/nvim-web-devicons',
       cmd = { 'TroubleToggle', 'Trouble' },
       config = function() require('config.trouble') end,
     }
 
+    -- bufferline tabs
     use {
       'akinsho/bufferline.nvim',
       tag = 'v2.*',
       requires = 'kyazdani42/nvim-web-devicons',
-      config = function()
-        require('config.bufferline')
-      end
+      config = function() require('config.bufferline') end
     }
 
-    use {
-      'kyazdani42/nvim-tree.lua',
-      requires = 'kyazdani42/nvim-web-devicons',
-      tag = 'nightly',
-      config = function()
-        require("config.nvim-tree")
-      end
-    }
-
+    -- git blame in files
     use {
       'APZelos/blamer.nvim',
       event = 'BufEnter'
     }
 
+    -- lsp actions and visuals
     use {
       'tami5/lspsaga.nvim',
       event = 'VimEnter',
       cmd = { 'Lspsaga' },
       config = function() require('config.lspsaga') end,
     }
+
+    -- Automatically set up configuration after cloning packer.nvim
+    if packer_bootstrap then
+      require('packer').sync()
+    end
   end,
 
   config = {
-	  display = {
-		  open_fn = function()
-			  return require('packer.util').float({ border = 'rounded' })
-		  end
-	  }
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = 'rounded' })
+      end
+    }
   }
 })
