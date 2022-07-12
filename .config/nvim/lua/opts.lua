@@ -50,5 +50,3 @@ vim.cmd([[
   nnoremap <A-k> <C-w>k
   nnoremap <A-l> <C-w>l  
 ]])
-
-vim.cmd('colorscheme onedark')

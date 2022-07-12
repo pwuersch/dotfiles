@@ -3,6 +3,9 @@
     "analytics": false,
     "warnings": {
       "versionMismatch": false
+    },
+    "completion": {
+      "prompted": true
     }
   },
   "version": 1

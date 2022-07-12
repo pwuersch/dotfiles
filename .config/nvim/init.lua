@@ -7,7 +7,7 @@ require('plugins')
 
 require('opts')
 
-require('mappings')
+vim.cmd('colorscheme onedark')
 
 vim.cmd([[
   augroup RestoreCursorShapeOnExit
