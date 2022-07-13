@@ -32,12 +32,11 @@
     [ -f $1 ] && source $1
   }
 
-  source_if_found ${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh
-  source_if_found $ZSH/oh-my-zsh.sh
-  source_if_found $ZDOTDIR/.p10k.zsh
-  source_if_found $HOME/.fzf.zsh
-  source_if_found $HOME/.cargo/env
-  source_if_found $XDG_CONFIG_HOME/nvm/nvm.sh
+  source_if_found "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  source_if_found "$ZSH/oh-my-zsh.sh"
+  source_if_found "$ZDOTDIR/.p10k.zsh"
+  source_if_found "$HOME/.fzf.zsh"
+  source_if_found "$XDG_CONFIG_HOME/nvm/nvm.sh"
 
   source $ZDOTDIR/local/*(D)
 
@@ -82,6 +81,7 @@
   alias k="kubectl"
   alias hui="helm upgrade --install --debug --atomic"
   alias gvm="$GOPATH/bin/g"
+  alias wget="wget --hsts-file=${XDG_DATA_HOME}/wget-hsts}"
 
   function yayu() { yay -Rsu $(yay -Qtdq) }
 
