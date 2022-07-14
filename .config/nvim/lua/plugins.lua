@@ -1,6 +1,6 @@
 -- bootstrapping packer
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   Packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 end
@@ -99,11 +99,16 @@ return require('packer').startup({
     --   config = function() require('config.telescope-packer') end,
     -- }
 
+    -- -- telescope
     -- use {
     --   'nvim-telescope/telescope-file-browser.nvim',
-    --   cmd = 'Telescope',
     --   config = function() require('config.telescope-file-browser') end
     -- }
+
+    use {
+      'kyazdani42/nvim-tree.lua',
+      config = function() require('config.nvim-tree') end
+    }
 
     -- treesitter
     use {
@@ -164,6 +169,12 @@ return require('packer').startup({
       config = function() require('config.lspsaga') end,
     }
 
+    use {
+      'numToStr/Comment.nvim',
+      event = 'BufEnter',
+      config = function() require('config.comment') end,
+    }
+
     -- Automatically set up configuration after cloning packer.nvim
     if Packer_bootstrap then
       require('packer').sync()
@@ -172,9 +183,10 @@ return require('packer').startup({
 
   config = {
     display = {
-      open_fn = function()
-        return require('packer.util').float({ border = 'rounded' })
-      end
+      open_fn = function() return require('packer.util').float({ border = 'rounded' }) end
+    },
+    profile = {
+      threshold = 0
     }
   }
 })
