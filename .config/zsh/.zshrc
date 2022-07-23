@@ -81,7 +81,7 @@
   alias k="kubectl"
   alias hui="helm upgrade --install --debug --atomic"
   alias gvm="$GOPATH/bin/g"
-  alias wget="wget --hsts-file=${XDG_DATA_HOME}/wget-hsts}"
+  alias wget="wget --hsts-file=${XDG_DATA_HOME}/wget-hsts"
 
   function yayu() { yay -Rsu $(yay -Qtdq) }
 
