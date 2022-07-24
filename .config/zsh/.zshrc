@@ -19,6 +19,9 @@
   ZSH_ALIAS_FINDER_AUTOMATIC=true
   ZSH_THEME="powerlevel10k/powerlevel10k"
 
+  # ------------------------------ Miscellaneous ------------------------------
+  compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+
   # ------------------------------ Load external scripts conditionally ------------------------------
   fpath=(
     $ZDOTDIR/scripts
@@ -35,7 +38,7 @@
   source_if_found "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
   source_if_found "$ZSH/oh-my-zsh.sh"
   source_if_found "$ZDOTDIR/.p10k.zsh"
-  source_if_found "$HOME/.fzf.zsh"
+  source_if_found "$FZF_HOME/.fzf.zsh"
   source_if_found "$XDG_CONFIG_HOME/nvm/nvm.sh"
 
   source $ZDOTDIR/local/*(D)
@@ -81,7 +84,8 @@
   alias k="kubectl"
   alias hui="helm upgrade --install --debug --atomic"
   alias gvm="$GOPATH/bin/g"
-  alias wget="wget --hsts-file=${XDG_DATA_HOME}/wget-hsts"
+  alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
+  alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 
   function yayu() { yay -Rsu $(yay -Qtdq) }
 
@@ -95,4 +99,12 @@
     output=$(echo "$1" | rev | cut -c16- | rev)
     gpg -do $output "$1" && echo "$1 -> $output"
   }
+
+
+  # ------------------------------ Setup fzf addons ------------------------------
+  # Auto-completion
+  [[ $- == *i* ]] && source "${FZF_HOME}/shell/completion.zsh" 2> /dev/null
+
+  # Key bindings
+  source "${FZF_HOME}/shell/key-bindings.zsh"
 }

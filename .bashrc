@@ -113,6 +113,8 @@ shopt -s expand_aliases
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
 
+export HISTFILE="${XDG_STATE_HOME}/bash/history"
+
 #
 # # ex - archive extractor
 # # usage: ex <file>
@@ -141,3 +143,18 @@ ex ()
 [ -f "$HOME/.fzf.bash" ] && source ~/.fzf.bash
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 [ -s "$HOME/.gvm/scripts/gvm" ] && source "$HOME/.gvm/scripts/gvm"
+
+export FZF_HOME="$XDG_DATA_HOME/fzf"
+# Setup fzf
+# ---------
+if [[ ! "$PATH" == *${FZF_HOME}/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}${FZF_HOME}/bin"
+fi
+
+# Auto-completion
+# ---------------
+[[ $- == *i* ]] && source "${FZF_HOME}/shell/completion.bash" 2> /dev/null
+
+# Key bindings
+# ------------
+source "${FZF_HOME}/shell/key-bindings.bash"
