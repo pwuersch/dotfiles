@@ -34,7 +34,6 @@ local function config(_config)
       vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-      vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
     end,
   }, _config or {})
 end

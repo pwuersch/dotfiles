@@ -45,6 +45,10 @@
 
   unset -f source_if_found
 
+  if command -v pyenv 1>/dev/null 2&>1; then
+    eval "$(pyenv init -)"
+  fi
+
   # ------------------------------ Conditionally override existing command ------------------------------
   local conditional_override() {
     if command -v $2 &> /dev/null ; then

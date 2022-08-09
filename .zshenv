@@ -32,6 +32,7 @@ export _Z_DATA="$XDG_DATA_HOME/z"
 export ANSIBLE_HOME="$XDG_DATA_HOME/ansible"
 export FZF_HOME="$XDG_DATA_HOME/fzf"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
 
 export BROWSER="/usr/bin/firefox"
 export MOZ_ENABLE_WAYLAND=1
@@ -47,3 +48,5 @@ export PATH="$PATH:$XDG_DATA_HOME/tfenv/bin"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$CARGO_HOME/bin"
 export PATH="$PATH:$FZF_HOME/bin"
+export PATH="$PATH:$HOME/.poetry/bin"
+export PATH="$PATH:$PYENV_ROOT/bin"

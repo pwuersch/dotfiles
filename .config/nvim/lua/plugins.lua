@@ -34,7 +34,6 @@ return require('packer').startup({
       { 'sainnhe/everforest', opt = true },
       { 'rmehri01/onenord.nvim', opt = true },
       { 'dracula/vim', as = 'dracula', opt = true },
-      { 'catppuccin/nvim', as = 'catppuccin', opt = true },
     }
 
     -- which-key
