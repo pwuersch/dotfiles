@@ -7,6 +7,7 @@
     yarn
     rust
     golang
+    poetry
     docker
     docker-compose
     zsh-z
@@ -20,7 +21,6 @@
   ZSH_THEME="powerlevel10k/powerlevel10k"
 
   # ------------------------------ Miscellaneous ------------------------------
-  compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 
   # ------------------------------ Load external scripts conditionally ------------------------------
   fpath=(
@@ -45,7 +45,7 @@
 
   unset -f source_if_found
 
-  if command -v pyenv 1>/dev/null 2&>1; then
+  if command -v pyenv &>/dev/null ; then
     eval "$(pyenv init -)"
   fi
 
