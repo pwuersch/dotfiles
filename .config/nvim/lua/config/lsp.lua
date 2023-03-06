@@ -58,7 +58,6 @@ local lsp_servers = {
   pyright = {},
   lemminx = {},
   intelephense = {},
-  sumneko_lua = {},
   prosemd_lsp = {},
   bashls = {},
 }
