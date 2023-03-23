@@ -41,8 +41,6 @@
   source_if_found "$FZF_HOME/.fzf.zsh"
   source_if_found "$XDG_CONFIG_HOME/nvm/nvm.sh"
 
-  source $ZDOTDIR/local/*(D)
-
   unset -f source_if_found
 
   if command -v pyenv &>/dev/null ; then
@@ -68,8 +66,6 @@
   alias cpr="cp -r"
   alias dba="docker build -t app ."
   alias gs="git switch"
-  alias gpl="git fetch -p ; git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d"
-  alias gplf="git fetch -p ; git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -D"
   alias gtr="git reset --hard"
   alias gtro="gtr origin/master"
   alias cds="cd ~/source"
@@ -105,6 +101,23 @@
     gpg -do $output "$1" && echo "$1 -> $output"
   }
 
+  gpl() {
+    git fetch -p
+    git branch -r \
+      | awk '{print $1}' \
+      | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) \
+      | awk '{print $1}' \
+      | xargs git branch -d
+  }
+
+  gplf() {
+    git fetch -p
+    git branch -r \
+      | awk '{print $1}' \
+      | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) \
+      | awk '{print $1}' \
+      | xargs git branch -D
+  }
 
   # ------------------------------ Setup fzf addons ------------------------------
   # Auto-completion
@@ -112,4 +125,7 @@
 
   # Key bindings
   source "${FZF_HOME}/shell/key-bindings.zsh"
+
+  # ------------------------------ Local config overrides ------------------------------
+  source $ZDOTDIR/local/*
 }
