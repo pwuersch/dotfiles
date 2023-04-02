@@ -5,9 +5,10 @@
     alias-finder
     git
     yarn
+    npm
     rust
     golang
-    poetry
+    # poetry
     docker
     docker-compose
     zsh-z
