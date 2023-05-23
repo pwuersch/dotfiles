@@ -103,7 +103,7 @@
   }
 
   gpl() {
-    git fetch -p
+    git fetch -p --all
     git branch -r \
       | awk '{print $1}' \
       | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) \
@@ -112,7 +112,7 @@
   }
 
   gplf() {
-    git fetch -p
+    git fetch -p --all
     git branch -r \
       | awk '{print $1}' \
       | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) \
