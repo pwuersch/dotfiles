@@ -88,6 +88,7 @@
   alias gvm="$GOPATH/bin/g"
   alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
   alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
+  alias bzl="bazelisk"
 
   function yayu() { yay -Rsu $(yay -Qtdq) }
 
