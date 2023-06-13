@@ -8,7 +8,7 @@
 	showUntrackedFiles = all
 
 [push]
-	default = current
+	default = simple
 [pull]
 	ff = only
 [rebase]
