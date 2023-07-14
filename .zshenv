@@ -5,6 +5,8 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 export XDG_CONIFG_DIRS="/etc/xdg"
 
+export ZSH_PLUGIN_DIR="${XDG_DATA_HOME}/zsh-plugins"
+
 export ARCHFLAGS="-arch x86_64"
 export TZ="Europe/Zurich"
 export KEYID="0xFE5AF81974F5CD23"
@@ -33,6 +35,10 @@ export ANSIBLE_HOME="$XDG_DATA_HOME/ansible"
 export FZF_HOME="$XDG_DATA_HOME/fzf"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
+export W3M_DIR="$XDG_DATA_HOME/w3m"
+export SONARLINT_USER_HOME="$XDG_DATA_HOME/sonarlint"
+export OMNISHARPHOME="$XDG_CONFIG_HOME/omnisharp"
+export NUGET_PACKAGES="$XDG_CACHE_HOME/NuGetPackages"
 
 export BROWSER="/usr/bin/firefox"
 export MOZ_ENABLE_WAYLAND=1

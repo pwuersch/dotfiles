@@ -1,0 +1,166 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Disable the blank line at the start of the prompt
+add_newline = false
+
+# Currently using the default dot (∙) instead of custom arrow
+# continuation_prompt = '▶▶'
+
+palette = "local"
+
+[palettes.local]
+kube-blue = "#326CE5"
+
+[git_branch]
+symbol = " "
+
+[git_status]
+ahead = '⇡${count}'
+diverged = '⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+untracked = '?${count}'
+stashed = '$${count}'
+modified = '!${count}'
+staged = '+${count}'
+renamed = '»${count}'
+deleted = '✘${count}'
+
+[git_commit]
+commit_hash_length = 4
+tag_symbol = '🔖 '
+
+[battery]
+full_symbol = '🔋 '
+charging_symbol = '⚡️ '
+discharging_symbol = '💀 '
+[[battery.display]] # 'bold red' style and discharging_symbol when capacity is between 0% and 10%
+threshold = 10
+style = 'bold red'
+[[battery.display]] # 'bold yellow' style and 💦 symbol when capacity is between 10% and 30%
+threshold = 30
+style = 'bold yellow'
+discharging_symbol = '💦'
+
+[kubernetes]
+disabled = false
+format = '[⛵ $context \($namespace\)](kube-blue) '
+detect_folders = ["kubernetes", "k8"]
+detect_files = ["kustomization.yaml", "kustomization.yml"]
+[kubernetes.context_aliases]
+'gke_.*_(?P<var_cluster>[\w-]+)' = 'gke-$var_cluster'
+[kubernetes.user_aliases]
+'root/.*' = 'root'
+
+[line_break]
+disabled = false
+
+[terraform]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[meson]
+disabled = true
+symbol = "󰔷 "
+
+[aws]
+symbol = "  "
+[buf]
+symbol = " "
+[c]
+symbol = " "
+[conda]
+symbol = " "
+[dart]
+symbol = " "
+[directory]
+read_only = " 󰌾"
+[docker_context]
+symbol = " "
+[elixir]
+symbol = " "
+[elm]
+symbol = " "
+[fossil_branch]
+symbol = " "
+[golang]
+symbol = " "
+[guix_shell]
+symbol = " "
+[haskell]
+symbol = " "
+[haxe]
+symbol = "⌘ "
+[hg_branch]
+symbol = " "
+[java]
+symbol = " "
+[julia]
+symbol = " "
+[lua]
+symbol = " "
+[memory_usage]
+symbol = "󰍛 "
+[nim]
+symbol = "󰆥 "
+[nix_shell]
+symbol = " "
+[nodejs]
+symbol = " "
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = "󰍲 "
+[package]
+symbol = "󰏗 "
+[pijul_channel]
+symbol = "🪺 "
+[python]
+symbol = " "
+[rlang]
+symbol = "󰟔 "
+[ruby]
+symbol = " "
+[rust]
+symbol = " "
+[scala]
+symbol = " "
+[spack]
+symbol = "🅢 "
