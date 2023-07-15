@@ -35,6 +35,11 @@ if [ -f "${ZSH_PLUGIN_DIR}/zsh-z/zsh-z.plugin.zsh" ]; then
   zstyle ':completion:*' menu select
 fi
 
+# ------------------------------ zsh-alias-finder ------------------------------
+if [ -f "${ZSH_PLUGIN_DIR}/zsh-alias-finder/zsh-alias-finder.plugin.zsh" ]; then
+  source "${ZSH_PLUGIN_DIR}/zsh-alias-finder/zsh-alias-finder.plugin.zsh"
+fi
+
 # ------------------------------ trash-cli ------------------------------
 if command -v trash &>/dev/null; then
   alias rm=trash

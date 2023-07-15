@@ -3,6 +3,7 @@
 set -euo pipefail
 
 GIT_REPOS=(
+  https://github.com/akash329d/zsh-alias-finder
   https://github.com/zsh-users/zsh-autosuggestions.git
   https://github.com/zsh-users/zsh-syntax-highlighting.git
   https://github.com/zsh-users/zsh-completions.git
