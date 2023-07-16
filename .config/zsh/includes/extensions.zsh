@@ -49,7 +49,6 @@ if command -v trash &>/dev/null; then
   alias t=trash
 fi
 
-
 # ------------------------------ pyenv ------------------------------
 if command -v pyenv &>/dev/null; then
   eval "$(pyenv init -)"

@@ -13,18 +13,25 @@ includes=(
   extensions
 )
 
-debug_loaded_files=()
-for f in "${includes[@]}"; do
-  debug_loaded_files+=($f)
-  source $ZDOTDIR/includes/$f.zsh
+for file in "${includes[@]}"; do
+  file="$ZDOTDIR/includes/$file.zsh"
+
+  start=`date +%s.%N`
+  source "$file"
+  end=`date +%s.%N`
+  
+  debug_loaded_files+="$file ($(echo "$end - $start" | bc -l))\n"
 done
 
-for f in $ZDOTDIR/local/*; do
-  if [ -f $f ]; then
-    debug_loaded_files+=("$f")
-    source $f
-  fi
+for file in $ZDOTDIR/local/*(D); do
+  start=`date +%s.%N`
+  source $file
+  end=`date +%s.%N`
+
+  debug_loaded_files+="$file ($(echo "$end - $start" | bc -l))\n"
 done
 
 autoload -U +X bashcompinit && bashcompinit
 autoload -U compaudit compinit zrecompile
+
+unset includes file start end
