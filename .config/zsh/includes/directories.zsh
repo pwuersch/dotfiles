@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # Changing/making/removing directory
 setopt auto_cd
 setopt auto_pushd

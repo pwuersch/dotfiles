@@ -1,4 +1,7 @@
+#!/usr/bin/env zsh
+
 # ------------------------------ Custom Aliases ------------------------------
+alias _='sudo '
 alias e="exit 0"
 alias n="nvim"
 alias md='mkdir -p'

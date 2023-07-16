@@ -1,3 +1,7 @@
+#!/usr/bin/env zsh
+
+# coming from https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/key-bindings.zsh
+
 # Make sure that the terminal is in application mode when zle is active, since
 # only then values from $terminfo are valid
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
@@ -11,8 +15,8 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
   zle -N zle-line-finish
 fi
 
-# # Use emacs key bindings
-# bindkey -e
+# Use emacs key bindings
+bindkey -e
 
 # [PageUp] - Up a line of history
 if [[ -n "${terminfo[kpp]}" ]]; then

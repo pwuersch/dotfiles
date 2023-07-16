@@ -1,14 +1,22 @@
-eval "$(starship init zsh)" || echo "WARNING: was unable to load starship prompt"
+eval "$(starship init zsh)"
 
 fpath=("${ZDOTDIR}/zfuncs" $fpath)
 
-debug_loaded_files=()
+includes=(
+  aliases
+  completion
+  directories
+  history
+  keybindings
+  git
+  misc
+  extensions
+)
 
-for f in $ZDOTDIR/includes/*; do
-  if [ -f $f ]; then
-    debug_loaded_files+=("$f")
-    source $f
-  fi
+debug_loaded_files=()
+for f in "${includes[@]}"; do
+  debug_loaded_files+=($f)
+  source $ZDOTDIR/includes/$f.zsh
 done
 
 for f in $ZDOTDIR/local/*; do
@@ -17,7 +25,6 @@ for f in $ZDOTDIR/local/*; do
     source $f
   fi
 done
-unset f
 
 autoload -U +X bashcompinit && bashcompinit
 autoload -U compaudit compinit zrecompile

@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # ------------------------------ fzf ------------------------------
 if [ -d "${FZF_HOME}/bin" ]; then
   # Setup fzf
@@ -47,12 +49,16 @@ if command -v trash &>/dev/null; then
   alias t=trash
 fi
 
-# ------------------------------ nvm ------------------------------
-if [ -f "${XDG_CONFIG_HOME}/nvm/nvm.sh" ]; then
-  source "${XDG_CONFIG_HOME}/nvm/nvm.sh"
-fi
 
 # ------------------------------ pyenv ------------------------------
 if command -v pyenv &>/dev/null; then
   eval "$(pyenv init -)"
+fi
+
+# ------------------------------ fnm ------------------------------
+# install fnm: curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell --install-dir $XDG_DATA_HOME/fnm
+# install completions: fnm completions --shell zsh
+
+if command -v fnm &>/dev/null; then
+  eval "$(fnm env)"
 fi
