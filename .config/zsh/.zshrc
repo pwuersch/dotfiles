@@ -2,6 +2,13 @@ eval "$(starship init zsh)"
 
 fpath=("${ZDOTDIR}/zfuncs" $fpath)
 
+logged_source() {
+  start=`date +%s.%N`
+  source $1
+  end=`date +%s.%N`
+  debug_loaded_files+="$(echo "$end - $start" | bc -l): $1\n"
+}
+
 includes=(
   aliases
   completion
@@ -14,21 +21,11 @@ includes=(
 )
 
 for file in "${includes[@]}"; do
-  file="$ZDOTDIR/includes/$file.zsh"
-
-  start=`date +%s.%N`
-  source "$file"
-  end=`date +%s.%N`
-  
-  debug_loaded_files+="$file ($(echo "$end - $start" | bc -l))\n"
+  logged_source "$ZDOTDIR/includes/$file.zsh"
 done
 
 for file in $ZDOTDIR/local/*(D); do
-  start=`date +%s.%N`
-  source $file
-  end=`date +%s.%N`
-
-  debug_loaded_files+="$file ($(echo "$end - $start" | bc -l))\n"
+  logged_source "$file"
 done
 
 autoload -U +X bashcompinit && bashcompinit

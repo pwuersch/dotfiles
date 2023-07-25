@@ -8,15 +8,15 @@ if [ -d "${FZF_HOME}/bin" ]; then
   fi
 
   # Auto-completion
-  [[ $- == *i* ]] && source "$FZF_HOME/shell/completion.zsh" 2>/dev/null
+  [[ $- == *i* ]] && logged_source "$FZF_HOME/shell/completion.zsh" 2>/dev/null
 
   # Key bindings
-  source "$FZF_HOME/shell/key-bindings.zsh"
+  logged_source "$FZF_HOME/shell/key-bindings.zsh"
 fi
 
 # ------------------------------ zsh-autosuggestions ------------------------------
 if [ -f "${ZSH_PLUGIN_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
-  source "${ZSH_PLUGIN_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  logged_source "${ZSH_PLUGIN_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
   bindkey '^f' autosuggest-accept
 fi
 
@@ -27,19 +27,19 @@ fi
 
 # ------------------------------ zsh-syntax-highlighting ------------------------------
 if [ -f "${ZSH_PLUGIN_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
-  source "${ZSH_PLUGIN_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  logged_source "${ZSH_PLUGIN_DIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 
 # ------------------------------ zsh-z ------------------------------
 if [ -f "${ZSH_PLUGIN_DIR}/zsh-z/zsh-z.plugin.zsh" ]; then
-  source "${ZSH_PLUGIN_DIR}/zsh-z/zsh-z.plugin.zsh"
+  logged_source "${ZSH_PLUGIN_DIR}/zsh-z/zsh-z.plugin.zsh"
   fpath=("${ZSH_PLUGIN_DIR}/zsh-z" $fpath)
   zstyle ':completion:*' menu select
 fi
 
 # ------------------------------ zsh-alias-finder ------------------------------
 if [ -f "${ZSH_PLUGIN_DIR}/zsh-alias-finder/zsh-alias-finder.plugin.zsh" ]; then
-  source "${ZSH_PLUGIN_DIR}/zsh-alias-finder/zsh-alias-finder.plugin.zsh"
+  logged_source "${ZSH_PLUGIN_DIR}/zsh-alias-finder/zsh-alias-finder.plugin.zsh"
 fi
 
 # ------------------------------ trash-cli ------------------------------
