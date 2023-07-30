@@ -69,3 +69,14 @@ clear_completions() {
   rm "${ZDOTDIR}/.zcompdump*"
   compinit
 }
+
+ssh_create_key() {
+  local key_name=$1
+  local key_name_lowercase=$(echo $1 | awk '{print tolower($0)}')
+
+  ssh-keygen \
+    -t ed25519 \
+    -a 420 \
+    -f "$HOME/.ssh/$key_name_lowercase.ed25519" \
+    -C "$key_name for $USER@$(hostname)"
+}
