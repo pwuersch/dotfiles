@@ -17,6 +17,7 @@ export KREW_ROOT="$XDG_DATA_HOME/krew"
 export TFENV_ROOT="$XDG_DATA_HOME/tfenv"
 export GOROOT="$XDG_DATA_HOME/go"
 export GOPATH="$HOME/source/go"
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 
 # XDG ninja
 export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME/aws/credentials"
@@ -53,3 +54,4 @@ export PATH="$PATH:$FZF_HOME/bin"
 export PATH="$PATH:$HOME/.poetry/bin"
 export PATH="$PATH:$PYENV_ROOT/bin"
 export PATH="$PATH:$XDG_DATA_HOME/fnm"
+export PATH="$PATH:$PNPM_HOME"
