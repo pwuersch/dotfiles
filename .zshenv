@@ -6,6 +6,7 @@ export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 export XDG_CONIFG_DIRS="/etc/xdg"
 
 export ZSH_PLUGIN_DIR="${XDG_DATA_HOME}/zsh-plugins"
+export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
 
 export ARCHFLAGS="-arch x86_64"
 export TZ="Europe/Zurich"

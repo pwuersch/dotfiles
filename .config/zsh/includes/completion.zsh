@@ -73,6 +73,3 @@ if [[ ${COMPLETION_WAITING_DOTS:-false} != false ]]; then
   bindkey -M viins "^I" expand-or-complete-with-dots
   bindkey -M vicmd "^I" expand-or-complete-with-dots
 fi
-
-# automatically load bash completion functions
-autoload -U +X bashcompinit && bashcompinit

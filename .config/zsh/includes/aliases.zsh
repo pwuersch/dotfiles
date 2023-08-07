@@ -7,9 +7,6 @@ alias n="nvim"
 alias md='mkdir -p'
 alias cpr="cp -r"
 alias dba="docker build -t app ."
-alias gs="git switch"
-alias gtr="git reset --hard"
-alias gtro="gtr origin/master"
 alias cds="cd ~/source"
 alias tf="terraform"
 alias tfa="tf apply --auto-approve"
@@ -30,7 +27,12 @@ alias gvm="$GOPATH/bin/g"
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 alias bzl="bazelisk"
-alias pnpu="corepack prepare pnpm@latest --activate"
+alias pnpu="corepack prepare pnpm@latest --activate && pnpm --version"
+
+alias gsc="git switch -c"
+alias gs="git switch"
+alias gtr="git reset --hard"
+alias gtro="gtr origin/master"
 
 # ------------------------------ Utility functions ------------------------------
 secret() {
@@ -66,8 +68,11 @@ yayu() {
 }
 
 clear_completions() {
-  rm "${ZDOTDIR}/.zcompdump*"
+  rm $ZDOTDIR/.zcompdump*(D) || true
+  
+  autoload -Uz compinit bashcompinit
   compinit
+  bashcompinit
 }
 
 ssh_create_key() {

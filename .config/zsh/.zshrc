@@ -4,6 +4,7 @@ eval "$(starship init zsh)"
 
 fpath=("${ZDOTDIR}/zfuncs" $fpath)
 
+# provides a proxy to `source` files with tracked time
 logged_source() {
   start=`date +%s.%N`
   source $1
@@ -22,15 +23,22 @@ includes=(
   extensions
 )
 
+# load "includes" in order they were defined from ./includes/{name}
 for file in "${includes[@]}"; do
   logged_source "$ZDOTDIR/includes/$file.zsh"
 done
+unset file includes
 
+# load local addons
 for file in $ZDOTDIR/local/*(D); do
   logged_source "$file"
 done
+unset file
 
-autoload -U +X bashcompinit && bashcompinit
-autoload -U compaudit compinit zrecompile
+# initialize completions
+autoload -Uz compinit bashcompinit
+compinit
+bashcompinit
 
-unset includes file start end
+# cleanup local variables / functions related to debugging and tracing
+unset logged_source start end
