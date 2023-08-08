@@ -29,10 +29,8 @@ alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 alias bzl="bazelisk"
 alias pnpu="corepack prepare pnpm@latest --activate && pnpm --version"
 
-alias gsc="git switch -c"
 alias gs="git switch"
-alias gtr="git reset --hard"
-alias gtro="gtr origin/master"
+alias gsc="git switch -c"
 
 # ------------------------------ Utility functions ------------------------------
 secret() {
