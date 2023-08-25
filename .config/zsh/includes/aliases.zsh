@@ -61,6 +61,18 @@ gplf() {
     xargs git branch -D
 }
 
+gmerged() {
+  git branch --merged $(git_main_branch) |
+    grep -v "^[ *]*$(git_main_branch)$" |
+    xargs git branch -d
+}
+
+gmergedf() {
+  git branch --merged $(git_main_branch) |
+    grep -v "^[ *]*$(git_main_branch)$" |
+    xargs git branch -D
+}
+
 yayu() {
   yay -Rsu $(yay -Qtdq)
 }
