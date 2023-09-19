@@ -27,7 +27,7 @@ alias gvm="$GOPATH/bin/g"
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 alias bzl="bazelisk"
-alias pnpu="corepack prepare pnpm@latest --activate && pnpm --version"
+alias pnpu="pnpm --version && corepack prepare pnpm@latest --activate && pnpm --version"
 
 alias gs="git switch"
 alias gsc="git switch -c"

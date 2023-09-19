@@ -61,3 +61,7 @@ fi
 if command -v fnm &>/dev/null; then
   eval "$(fnm env)"
 fi
+
+# ------------------------------ bun ------------------------------
+# bun completions
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
