@@ -20,6 +20,7 @@ export GOROOT="$XDG_DATA_HOME/go"
 export GOPATH="$HOME/source/go"
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 export BUN_INSTALL="$XDG_DATA_HOME/bun"
+export FNM_COREPACK_ENABLED="true"
 
 # XDG ninja
 export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME/aws/credentials"
